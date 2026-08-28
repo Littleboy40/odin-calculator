@@ -13,7 +13,8 @@ function operate(operator, num1, num2) {
             if (num2 === 0) {
                 return "NaN";
             }
-            return num1 / num2;
+            let roundingFactor = 100000;
+            return Math.round(roundingFactor * num1 / num2) / roundingFactor;
     }
 }
 
@@ -43,6 +44,7 @@ function updateDisplay(event) {
         clear();
         result = 0;
     } else if (press === "=") {
+        if (operator === "") return;
         // adjust variables and display
         result = operate(operator, firstNumber, secondNumber);
         firstNumber = result;
